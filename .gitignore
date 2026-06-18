@@ -1,0 +1,33 @@
+# 環境與金鑰（絕不上傳）
+.env
+.env.*
+*.key
+secrets/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 系統 / 編輯器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 完整版成稿輸出（不進開源 repo）
+*.pdf
+*.docx
+*.epub
+
+# 防夾帶其他專案資產（重要：原工作目錄混了別的專案）
+docs/
+book_assets/
+node_modules/
+.playwright-mcp/
+*.pptx
