@@ -116,6 +116,12 @@ agent = create_deep_agent(
 
 看起來跟 LangChain 一樣簡潔，但這個 agent **天生就會規劃（`write_todos`）、有一整套虛擬檔案系統工具（ls/read/write/edit/glob/grep）、能派生 subagents、會自動管理過長的 context**。對「查個天氣」這種小任務，這些是殺雞用牛刀；但對「研究一個主題、查二十個來源、寫成一份十頁報告」這種長任務，這些內建能力就是天壤之別。
 
+> 🪞 **對照閱讀** —— 三層的「呼叫」都一樣簡潔，但**取「最終答案」的方式不一樣**（配套 notebook 裡你會實際跑到）：
+> - `create_agent` / 手刻 graph：messages 鏈單純，`result["messages"][-1]` 通常就是答案。
+> - `create_deep_agent`：它會先規劃（`write_todos`）、調工具、收尾，**鏈更長，最後一條未必是帶文字的答案**——直接印 `result["messages"][-1].content_blocks` 可能得到空的 `[]`。要從後往前找**最後一條有 `content` 的 AI 訊息**才穩。
+>
+> 這不是 bug，是 harness「多做了規劃與編排」的副作用：你換到的是長任務能力，代價是輸出結構更複雜。
+
 ## 2.4 三層能力對照表
 
 同樣一個概念，在三層有不同的實現方式。這張表幫你快速定位（後面各章會逐一展開）：
