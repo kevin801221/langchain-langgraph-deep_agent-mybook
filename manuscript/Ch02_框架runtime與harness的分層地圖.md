@@ -109,6 +109,7 @@ from deepagents import create_deep_agent
 
 agent = create_deep_agent(
     tools=[get_weather],
+    model="google_genai:gemini-2.5-flash",
     system_prompt="你是個樂於助人的研究助理。",
 )
 ```
